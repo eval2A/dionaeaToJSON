@@ -321,9 +321,9 @@ if os.path.isfile(dionaeaSQLite):
 			usedConnectionsString = ', '.join(str(e) for e in usedConnections)
 			sql = 'SELECT * FROM connections WHERE NOT connection in (' + usedConnectionsString + ') '
 		else:
-			sql = 'SELECT * FROM ' + sqlTableIdentifier + ' '
+			sql = 'SELECT * FROM ' + sqlTableConfig['index'] + ' '
 			if 'joins' in sqlTableConfig:
-				sql += joinsLoop(sqlTableIdentifier, sqlTableConfig['joins'])
+				sql += joinsLoop(sqlTableConfig['index'], sqlTableConfig['joins'])
 			# Include data from connections
 			sql += 'LEFT JOIN connections USING (connection) '
 
@@ -349,7 +349,7 @@ if os.path.isfile(dionaeaSQLite):
 			result.pop('connection_timestamp', None)
 
 			ignoreDownload = False
-			if sqlTableIdentifier == 'downloads':
+			if sqlTableConfig['index'] == 'downloads':
 				# Check download for filetype
 				if os.path.isfile(dionaeaBinariesPath + '/' + result['download_md5_hash']):
 					result['download_filetype'] = subprocess.check_output('file -b ' + dionaeaBinariesPath + '/'  + result['download_md5_hash'], shell=True)
