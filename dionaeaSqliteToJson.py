@@ -321,9 +321,9 @@ if os.path.isfile(dionaeaSQLite):
 			usedConnectionsString = ', '.join(str(e) for e in usedConnections)
 			sql = 'SELECT * FROM connections WHERE NOT connection in (' + usedConnectionsString + ') '
 		else:
-			sql = 'SELECT * FROM ' + sqlTableConfig['index'] + ' '
+			sql = 'SELECT * FROM ' + sqlTableConfig['table'] + ' '
 			if 'joins' in sqlTableConfig:
-				sql += joinsLoop(sqlTableConfig['index'], sqlTableConfig['joins'])
+				sql += joinsLoop(sqlTableConfig['table'], sqlTableConfig['joins'])
 			# Include data from connections
 			sql += 'LEFT JOIN connections USING (connection) '
 
