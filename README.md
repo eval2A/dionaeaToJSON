@@ -1,6 +1,6 @@
 # dionaeaToJSON
 Version: 0.1<br>
-Scripted for: Dionaea 0.6.0<br>
+Scripted for: Dionaea 0.8.0<br>
 <br>
 ### Description:
 Converts the SQLite database produced by Dionaea to a JSON format suitable for the ELK stack.<br>
