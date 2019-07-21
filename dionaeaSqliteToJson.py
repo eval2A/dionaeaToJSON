@@ -352,7 +352,7 @@ if os.path.isfile(dionaeaSQLite):
             result.pop('connection_timestamp', None)
 
             ignoreDownload = False
-            if sqlTableConfig['index'] == 'downloads':
+            if sqlTableConfig['index'] == 'download':
                 # Check download for filetype
                 if os.path.isfile(dionaeaBinariesPath + '/' + result['download_md5_hash']):
                     result['download_filetype'] = subprocess.check_output('file -b ' + dionaeaBinariesPath + '/'  + result['download_md5_hash'], shell=True)
